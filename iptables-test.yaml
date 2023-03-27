@@ -1,0 +1,32 @@
+---
+- name: Create user myuser
+  hosts: myhost
+  tasks:
+    - name: Set allow input from ip 123.145.167.254 to port 9100 tcp
+      ansible.builtin.iptables:
+        chain: INPUT
+        protocol: tcp
+        destination_port: 9100
+        source: 123.145.167.254
+        jump: ACCEPT
+
+    - name: Set allow input from ip 123.145.167.254 to port 9100 udp
+      ansible.builtin.iptables:
+        chain: INPUT
+        protocol: udp
+        destination_port: 9100
+        source: 123.145.167.254
+        jump: ACCEPT
+
+    - name: Set allow input from ip anywere to port 37656 tcp
+      ansible.builtin.iptables:
+        chain: INPUT
+        protocol: tcp
+        destination_port: 37656
+        jump: ACCEPT
+
+    - name: Set the policy for the INPUT chain to DROP
+      ansible.builtin.iptables:
+        chain: INPUT
+        policy: DROP
+

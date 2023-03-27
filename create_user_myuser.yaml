@@ -1,0 +1,9 @@
+---
+- name: Create user myuser
+  hosts: myhost
+  tasks:
+    - name: Add the user 'myuser' with a password
+      ansible.builtin.user:
+        name: myuser
+        password: '$6$72xTm7qlVPIKNdOe$31EqDB4SGvOq51tLA76mK4DL8v10zYG1b5PjvgH937.SLGvNvV14/lry81pbIv.VKwAnjcGaNh6dEZKSu5zwC0'
+
